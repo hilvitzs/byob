@@ -31,7 +31,7 @@ module.exports = {
   },
   seeds: {
     directory: __dirname + '/db/seeds/dev'
-  }
+  },
   useNullAsDefault: true
   }
 };
