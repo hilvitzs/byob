@@ -56,7 +56,7 @@ describe('API Routes', () => {
         response.body.should.be.a('array');
         response.body.length.should.equal(3);
         response.body[0].should.have.property('id');
-        response.body[0].id.should.equal(1)
+        response.body[0].id.should.equal(1);
         response.body[0].should.have.property('attribute');
         response.body[0].attribute.should.equal('collectible wine')
         response.body[0].should.have.property('Image_URL');
