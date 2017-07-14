@@ -1,10 +1,10 @@
-const wineData = require('../wine.json')
+const wineData = require('../../wine.json')
 
 const createWine = (knex, wine) => {
   return knex('wines').insert({
     name: wine.Name,
-    "max price": wine.PriceMax,
-    "min price": wine.PriceMin,
+    max_price: wine.PriceMax,
+    min_price: wine.PriceMin,
   }, 'id')
   .then(wineId => {
     let attributePromises = [];
@@ -12,9 +12,9 @@ const createWine = (knex, wine) => {
     wine.ProductAttributes.forEach(attribute => {
       attributePromises.push(
         createAttribute(knex, {
-          "attribute": attribute.Name,
-          "Image URL": attribute.ImageUrl,
-          "wines_id": wineId[0]
+          attribute: attribute.Name,
+          Image_URL: attribute.ImageUrl,
+          wines_id: wineId[0]
         })
       )
     });
@@ -28,8 +28,8 @@ const createAttribute = (knex, attribute) => {
 };
 
 exports.seed = (knex, Promise) => {
-  return knex('attributes').del() // delete footnotes first
-    .then(() => knex('wines').del()) // delete all papers
+  return knex('attributes').del()
+    .then(() => knex('wines').del())
     .then(() => {
       let winePromises = [];
 
