@@ -101,20 +101,19 @@ app.get('/api/v1/attributes/:id', (request, response) => {
     })
 })
 
-// app.get('/api/v1/wines', (request, response) => {
-//   const query = request.query;
-//   const queryKeys = Object.keys(query);
-//
-//   console.log(queryKeys);
-//
-//   database('wines').where('id', id).select()
-//     .then(resource => {
-//       response.status(200).json(resource)
-//     })
-//     .catch(error => {
-//       response.status(500).json({ error })
-//     })
-// })
+app.get('/api/v1/wines', (request, response) => {
+  const query = request.query;
+  const queryKeys = Object.keys(query);
+
+  if (queryKeys.length) {
+    database('wines').where(queryKeys[0], req.query[queryKeys[0]]).select()
+      .then(resource => {
+        response.status(200).json(resource)
+      })
+  } else {
+    response.status(404).json({Error: 'The query that you are looking  for does not exist'})
+  }
+})
 
 const checkAuth = (request, response, next) => {
 
