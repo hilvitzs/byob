@@ -35,7 +35,7 @@ app.post('/authenticate', (request, response) => {
     response.json({
       success: true,
       username: user.username,
-      token: token
+      token
     });
   }
 });
@@ -43,11 +43,11 @@ app.post('/authenticate', (request, response) => {
 app.get('/api/v1/wines', (request, response) => {
   database('wines').select()
     .then((wines) => {
-      if(wines) {
+      if (wines) {
         response.status(200).json(wines)
       }
       return response.status(404).json({
-      error: 'No Wines Found!'
+        error: 'No Wines Found!'
       })
     })
     .catch((error) => {
@@ -58,11 +58,11 @@ app.get('/api/v1/wines', (request, response) => {
 app.get('/api/v1/attributes', (request, response) => {
   database('attributes').select()
     .then((attributes) => {
-      if(attributes) {
+      if (attributes) {
         response.status(200).json(attributes)
       }
       return response.status(404).json({
-      error: 'No Attributes Found!'
+        error: 'No Attributes Found!'
       })
     })
     .catch(error => {
@@ -75,11 +75,11 @@ app.get('/api/v1/wines/:id', (request, response) => {
 
   database('wines').where('id', id).select()
     .then(wine => {
-      if(wine) {
+      if (wine) {
         response.status(200).json(wine)
       }
       return response.status(404).json({
-      error: 'There is no wine with that ID!'
+        error: 'There is no wine with that ID!'
       })
     })
     .catch(error => {
@@ -92,11 +92,11 @@ app.get('/api/v1/attributes/:id', (request, response) => {
 
   database('attributes').where('id', id).select()
     .then(attribute => {
-      if(attribute) {
+      if (attribute) {
         response.status(200).json(attribute)
       }
       return response.status(404).json({
-      error: 'There is no wine with that ID!'
+        error: 'There is no wine with that ID!'
       })
     })
 })
@@ -150,17 +150,17 @@ app.post('/api/v1/wines', checkAuth, (request, response) => {
 
   const wine = request.body
 
-database('wines').insert(wine, 'id')
-  .then(wine => {
-    if (result) {
-      response.status(201).json({ id: wine[0] })
-    } else {
-      response.status(422).json({ error: 'You are missing a property' })
-    }
-  })
-  .catch(error => {
-    response.status(500).json({ error })
-  })
+  database('wines').insert(wine, 'id')
+    .then(wine => {
+      if (result) {
+        response.status(201).json({ id: wine[0] })
+      } else {
+        response.status(422).json({ error: 'You are missing a property' })
+      }
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
 
 app.post('/api/v1/attributes', checkAuth, (request, response) => {
@@ -171,16 +171,16 @@ app.post('/api/v1/attributes', checkAuth, (request, response) => {
   const attribute = request.body
 
   database('attributes').insert(attribute, 'id')
-  .then(attribute => {
-    if (result) {
-      response.status(201).json({ id: attribute[0] })
-    } else {
-      response.status(422).json({ error: 'You are missing a property' })
-    }
-  })
-  .catch(error => {
-    response.status(500).json({ error })
-  })
+    .then(attribute => {
+      if (result) {
+        response.status(201).json({ id: attribute[0] })
+      } else {
+        response.status(422).json({ error: 'You are missing a property' })
+      }
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
 
 app.patch('/api/v1/wines/:id', checkAuth, (request, response) => {
@@ -188,12 +188,12 @@ app.patch('/api/v1/wines/:id', checkAuth, (request, response) => {
   const update = request.body
 
   database('wines').where('id', id).update(update)
-  .then(update => {
-    response.status(200).json({ update })
-  })
-  .catch(error => {
-    response.status(500).json({ error })
-  })
+    .then(update => {
+      response.status(200).json({ update })
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
 
 app.patch('/api/v1/attributes/:id', checkAuth, (request, response) => {
@@ -201,12 +201,12 @@ app.patch('/api/v1/attributes/:id', checkAuth, (request, response) => {
   const update = request.body
 
   database('attributes').where('id', id).update(update)
-  .then(update => {
-    response.status(200).json({ update })
-  })
-  .catch(error => {
-    response.status(500).json({ error })
-  })
+    .then(update => {
+      response.status(200).json({ update })
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
 
 app.delete('/api/v1/wines/:id', (request, response) => {
