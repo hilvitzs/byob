@@ -60,14 +60,6 @@ describe('API Routes', () => {
           response.should.be.json;
           response.body.should.be.a('array');
           response.body.length.should.equal(3);
-          response.body[0].should.have.property('id');
-          response.body[0].id.should.equal(1);
-          response.body[0].should.have.property('attribute');
-          response.body[0].attribute.should.equal('collectible wine')
-          response.body[0].should.have.property('Image_URL');
-          response.body[0].Image_URL.should.equal('http://www.google.com')
-          response.body[0].should.have.property('wines_id');
-          response.body[0].wines_id.should.equal(1);
           done();
         })
     });
