@@ -234,7 +234,7 @@ app.delete('/api/v1/attributes/:id', (request, response) => {
 })
 
 app.listen(app.get('port'), () => {
-  console.log(`${app.} is running on ${app.get('port')}.`)
+  console.log(`${app.res} is running on ${app.get('port')}.`)
 })
 
 module.exports = app;
