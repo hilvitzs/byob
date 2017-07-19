@@ -8,6 +8,8 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const config = require('dotenv').config();
 
+app.locals.title = 'BYOB'
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -233,7 +235,7 @@ app.delete('/api/v1/attributes/:id', (request, response) => {
 })
 
 app.listen(app.get('port'), () => {
-  console.log(`${app.res} is running on ${app.get('port')}.`)
+  console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
 
 module.exports = app;
