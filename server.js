@@ -8,7 +8,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const config = require('dotenv').config();
 
-app.locals.title = 'BYOB'
+app.locals.title = 'BYOB';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
