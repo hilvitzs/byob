@@ -6,21 +6,21 @@ const createWine = (knex, wine) => {
     max_price: wine.PriceMax,
     min_price: wine.PriceMin,
   }, 'id')
-  .then(wineId => {
-    let attributePromises = [];
+    .then(wineId => {
+      let attributePromises = [];
 
-    wine.ProductAttributes.forEach(attribute => {
-      attributePromises.push(
-        createAttribute(knex, {
-          attribute: attribute.Name,
-          Image_URL: attribute.ImageUrl,
-          wines_id: wineId[0]
-        })
-      )
-    });
+      wine.ProductAttributes.forEach(attribute => {
+        attributePromises.push(
+          createAttribute(knex, {
+            attribute: attribute.Name,
+            Image_URL: attribute.ImageUrl,
+            wines_id: wineId[0]
+          })
+        )
+      });
 
-    return Promise.all(attributePromises);
-  })
+      return Promise.all(attributePromises);
+    })
 };
 
 const createAttribute = (knex, attribute) => {

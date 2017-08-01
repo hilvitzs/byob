@@ -4,8 +4,6 @@ const database = require('knex')(configuration);
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
 const config = require('dotenv').config();
 
 app.locals.title = 'BYOB';
@@ -113,7 +111,7 @@ app.get('/api/v1/wines', (request, response) => {
         response.status(200).json(resource)
       })
   } else {
-    response.status(404).json({Error: 'The query that you are looking  for does not exist'})
+    response.status(404).json({Error: 'The query that you are looking for does not exist'})
   }
 })
 
