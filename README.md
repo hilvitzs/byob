@@ -1,6 +1,6 @@
 # README
 
-### BYOB (deployed to: https://sh-byob.herokuapp.com)
+### BYOB (deployed to: https://sh-byob.herokuapp.com - please see endpoints below as there is no home page)
 
 Build Your Own Backend required that we create a backend and migrate and seed the information into those databases. We had to get our own data and seed the databases with that information.
 
